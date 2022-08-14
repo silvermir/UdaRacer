@@ -81,6 +81,8 @@ async function handleCreateRace() {
     // TODO - Get player_id and track_id from the store
 
     // const race = TODO - invoke the API call to create the race, then save the result
+    const race = await createRace(player_id, track_id)
+    race_id = Object.assign(store, { race_id: race.ID - 1 })
 
     // TODO - update the store with the race id
     // For the API to work properly, the race id should be race id - 1
@@ -341,6 +343,7 @@ function createRace(player_id, track_id) {
     player_id = parseInt(player_id)
     track_id = parseInt(track_id)
     const body = { player_id, track_id }
+
 
     return fetch(`${SERVER}/api/races`, {
             method: 'POST',
