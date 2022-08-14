@@ -75,7 +75,8 @@ async function delay(ms) {
 // This async function controls the flow of the race, add the logic and error handling
 async function handleCreateRace() {
     // render starting UI
-    renderAt('#race', renderRaceStartView())
+    let { player_id, track_id } = store
+    renderAt('#race', renderRaceStartView(player_id, track_id))
 
     // TODO - Get player_id and track_id from the store
 
@@ -144,8 +145,9 @@ function handleSelectPodRacer(target) {
 
     // add class selected to current target
     target.classList.add('selected')
-
-    // TODO - save the selected racer to the store
+    player_id = Object.assign(store, { player_id: target.id })
+    console.log(store)
+        // TODO - save the selected racer to the store
 }
 
 function handleSelectTrack(target) {
@@ -159,8 +161,9 @@ function handleSelectTrack(target) {
 
     // add class selected to current target
     target.classList.add('selected')
-
-    // TODO - save the selected track id to the store
+    track_id = Object.assign(store, { track_id: target.id })
+    console.log(store)
+        // TODO - save the selected track id to the store
 
 }
 
