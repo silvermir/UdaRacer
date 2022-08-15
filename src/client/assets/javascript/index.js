@@ -94,13 +94,13 @@ async function handleCreateRace() {
 
     if (!track_id && !player_id) {
         alert("Please choose a track and a racer first")
-        return ""
+        return false
     } else if (!track_id) {
         alert("Please choose a track first");
-        return "";
+        return false
     } else if (!player_id) {
         alert("Please choose a racer first");
-        return "";
+        return false
     } else {
         renderAt('#race', renderRaceStartView(track_id, player_id))
     }
